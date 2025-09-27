@@ -26,7 +26,7 @@ export default function Main() {
       sx={{
         display: "flex",
         flexDirection: { xs: "column", md: "row" },
-        gap: { xs: 2, sm: 3, md: 6 },
+        gap: { xs: 1, sm: 3, md: 6 },
       }}
     >
       <Box sx={{ order: { xs: 3, sm: 3, md: 0 } }}>
@@ -74,7 +74,7 @@ export default function Main() {
                 mt: { md: 3 },
               }}
             >
-              Hey{" "}
+              Hey
               <Box
                 component="br"
                 sx={{ display: { xs: "none", md: "block" } }}
@@ -82,12 +82,20 @@ export default function Main() {
               {`I'm `}
               <span style={{ color: "#57f2e5" }}>Rasmilan</span>
               <br />
-              Full-Stack Developer
+              <Typography
+                component="span"
+                sx={{
+                  color: "#57f2e5",
+                  display: { xs: "none", md: "inline" }, // responsive display
+                }}
+              >
+                Full-Stack Developer
+              </Typography>
             </Typography>
 
             <Typography
               variant="body2"
-              mt={2}
+              mt={{xs:1,md:2}}
               sx={{
                 fontFamily: '"Sansation", sans-serif',
                 fontWeight: 300,
