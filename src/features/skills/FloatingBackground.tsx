@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useMemo } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Box, SxProps, Theme } from "@mui/material";
 import { Icon } from "@iconify/react";
 
@@ -31,7 +31,7 @@ const minSpacing = 40;
 export default function FloatingBackground({
   children,
   sx,
-  iconCount = 40, 
+  iconCount = 40,
 }: {
   children: React.ReactNode;
   sx?: SxProps<Theme>;
@@ -40,11 +40,15 @@ export default function FloatingBackground({
   const iconsRef = useRef<FloatingIcon[]>([]);
   const mousePos = useRef({ x: 0, y: 0 });
   const tilt = useRef({ gamma: 0, beta: 0 });
+  const [mounted, setMounted] = useState(false);
 
-  // Initialize icons once with spacing
-  const initialIcons = useMemo(() => {
-    const width = typeof window !== "undefined" ? window.innerWidth : 1200;
-    const height = typeof window !== "undefined" ? window.innerHeight : 800;
+  const [initialIcons, setInitialIcons] = useState<FloatingIcon[]>([]);
+
+  useEffect(() => {
+    setMounted(true);
+
+    const width = window.innerWidth;
+    const height = window.innerHeight;
     const icons: FloatingIcon[] = [];
 
     while (icons.length < iconCount) {
@@ -53,10 +57,10 @@ export default function FloatingBackground({
       const y = Math.random() * (height - size);
       const icon = techLogos[Math.floor(Math.random() * techLogos.length)];
 
-      // Check minimal distance to avoid overlap
       const tooClose = icons.some(
         (other) => Math.hypot(other.x - x, other.y - y) < minSpacing + size / 2
       );
+
       if (!tooClose) {
         icons.push({
           x,
@@ -68,23 +72,24 @@ export default function FloatingBackground({
         });
       }
     }
-    return icons;
+
+    setInitialIcons(icons);
+    iconsRef.current = icons;
   }, [iconCount]);
 
   useEffect(() => {
-    iconsRef.current = initialIcons;
+    if (!mounted) return;
 
     let frame: number;
     const gravity = 0.04;
     const bounce = 0.6;
 
-    // Device orientation handler
     const handleOrientation = (event: DeviceOrientationEvent) => {
       tilt.current.gamma = event.gamma ?? 0;
       tilt.current.beta = event.beta ?? 0;
     };
 
-    if (window && "DeviceOrientationEvent" in window) {
+    if ("DeviceOrientationEvent" in window) {
       window.addEventListener("deviceorientation", handleOrientation, true);
     }
 
@@ -99,7 +104,7 @@ export default function FloatingBackground({
 
         const dxMouse = icon.x - mouseX;
         const dyMouse = icon.y - mouseY;
-        const distMouse = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
+        const distMouse = Math.sqrt(dxMouse ** 2 + dyMouse ** 2);
         if (distMouse < 120) {
           icon.dx += (dxMouse / distMouse) * 0.2;
           icon.dy += (dyMouse / distMouse) * 0.2;
@@ -108,11 +113,9 @@ export default function FloatingBackground({
         icon.dx += gamma * 0.005;
         icon.dy += beta * 0.005;
 
-        // Apply velocity
         icon.x += icon.dx;
         icon.y += icon.dy;
 
-        // Boundary collisions
         if (icon.x < 0 || icon.x > width - icon.size) {
           icon.dx *= -bounce;
           icon.x = Math.max(0, Math.min(width - icon.size, icon.x));
@@ -122,7 +125,6 @@ export default function FloatingBackground({
           icon.y = Math.max(0, Math.min(height - icon.size, icon.y));
         }
 
-        // Update DOM with GPU-friendly transform + depth
         if (icon.el) {
           icon.el.style.transform = `translate3d(${icon.x}px, ${icon.y}px, ${icon.y / 2}px)`;
           icon.el.style.opacity = "0.85";
@@ -137,15 +139,20 @@ export default function FloatingBackground({
 
     return () => {
       cancelAnimationFrame(frame);
-      if (window && "DeviceOrientationEvent" in window) {
+      if ("DeviceOrientationEvent" in window) {
         window.removeEventListener("deviceorientation", handleOrientation);
       }
     };
-  }, [initialIcons]);
+  }, [mounted]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     mousePos.current = { x: e.clientX, y: e.clientY };
   };
+
+  if (!mounted) {
+    // Render children without icons during SSR
+    return <Box sx={{ position: "relative", ...sx }}>{children}</Box>;
+  }
 
   return (
     <Box
@@ -155,11 +162,10 @@ export default function FloatingBackground({
         width: "100%",
         minHeight: "100vh",
         overflow: "hidden",
-        perspective: "1000px", 
+        perspective: "1000px",
         ...sx,
       }}
     >
-      {/* Floating icons */}
       <Box
         sx={{
           position: "absolute",
@@ -187,8 +193,7 @@ export default function FloatingBackground({
         ))}
       </Box>
 
-      {/* Page content */}
-      <Box sx={{ position: "relative", zIndex: 10}}>{children}</Box>
+      <Box sx={{ position: "relative", zIndex: 10 }}>{children}</Box>
     </Box>
   );
 }

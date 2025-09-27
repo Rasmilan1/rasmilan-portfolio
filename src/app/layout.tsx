@@ -6,7 +6,6 @@ import {
   Lexend_Deca,
   Courier_Prime,
   Major_Mono_Display,
-  Sansation,
 } from "next/font/google";
 import "./globals.css";
 import { Zain } from "next/font/google";
@@ -36,13 +35,7 @@ const zain = Zain({
   variable: "--font-zain",
 });
 
-const sansation = Sansation({
-  subsets: ["latin"],
-  weight: ["300", "400", "700"],
-  style: ["normal", "italic"],
-  display: "swap",
-  variable: "--font-sansation", 
-});
+
 const majorMonoDisplay = Major_Mono_Display({
   subsets: ["latin"],
   weight: ["400"],
@@ -104,7 +97,6 @@ export default function RootLayout({
     ${merriweather.variable} 
     ${turretRoad.variable} 
     ${zain.variable} 
-    ${sansation.variable} 
     antialiased
   `}
       >
