@@ -74,7 +74,7 @@ export default function Main() {
                 mt: { md: 3 },
               }}
             >
-              Hey
+              Hey{" "}
               <Box
                 component="br"
                 sx={{ display: { xs: "none", md: "block" } }}
