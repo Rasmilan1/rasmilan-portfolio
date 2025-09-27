@@ -1,26 +1,190 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.goldman-regular {
+  font-family: var(--font-goldman), sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.goldman-bold {
+  font-family: var(--font-goldman), sans-serif;
+  font-weight: 700;
+  font-style: normal;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.lexend-deca-regular {
+  font-family: var(--font-lexend-deca), sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+.major-mono-display-regular {
+  font-family: var(--font-major-mono-display), monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+.zain-extralight {
+  font-family: "Zain", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.zain-light {
+  font-family: "Zain", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.zain-regular {
+  font-family: "Zain", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.zain-bold {
+  font-family: "Zain", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.zain-extrabold {
+  font-family: "Zain", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.zain-black {
+  font-family: "Zain", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.zain-light-italic {
+  font-family: "Zain", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.zain-regular-italic {
+  font-family: "Zain", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+
+/* styles/fonts.css */
+.sansation-light {
+  font-family: var(--font-sansation), sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.sansation-regular {
+  font-family: var(--font-sansation), sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.sansation-bold {
+  font-family: var(--font-sansation), sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.sansation-light-italic {
+  font-family: var(--font-sansation), sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.sansation-regular-italic {
+  font-family: var(--font-sansation), sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.sansation-bold-italic {
+  font-family: var(--font-sansation), sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* styles/fonts.css */
+
+.sansation-light {
+  font-family: var(--font-sansation), sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.sansation-regular {
+  font-family: var(--font-sansation), sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.sansation-bold {
+  font-family: var(--font-sansation), sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.sansation-light-italic {
+  font-family: var(--font-sansation), sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.sansation-regular-italic {
+  font-family: var(--font-sansation), sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.sansation-bold-italic {
+  font-family: var(--font-sansation), sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.turret-road-extralight {
+  font-family: "Turret Road", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.turret-road-light {
+  font-family: "Turret Road", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.turret-road-regular {
+  font-family: "Turret Road", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.turret-road-medium {
+  font-family: "Turret Road", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.turret-road-bold {
+  font-family: "Turret Road", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.turret-road-extrabold {
+  font-family: "Turret Road", sans-serif;
+  font-weight: 800;
+  font-style: normal;
 }
