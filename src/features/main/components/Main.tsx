@@ -95,7 +95,7 @@ export default function Main() {
 
             <Typography
               variant="body2"
-              mt={{xs:1,md:2}}
+              mt={{ xs: 1, md: 2 }}
               sx={{
                 fontFamily: '"Sansation", sans-serif',
                 fontWeight: 300,
@@ -113,6 +113,9 @@ export default function Main() {
               sx={{
                 mt: 2,
                 color: "#57f2e5",
+              }}
+              onClick={() => {
+                window.location.hash = "#contact"; 
               }}
             >
               Let’s Talk
