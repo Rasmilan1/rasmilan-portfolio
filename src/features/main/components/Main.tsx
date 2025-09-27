@@ -83,10 +83,12 @@ export default function Main() {
               <span style={{ color: "#57f2e5" }}>Rasmilan</span>
               <br />
               <Typography
-                component="span"
+                variant="h3"
                 sx={{
-                  color: "#57f2e5",
-                  display: { xs: "none", md: "inline" }, // responsive display
+                  fontFamily: '"Zain", sans-serif',
+                  fontWeight: "bold",
+                  fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
+                  display: { xs: "none", md: "inline" },
                 }}
               >
                 Full-Stack Developer
@@ -115,7 +117,7 @@ export default function Main() {
                 color: "#57f2e5",
               }}
               onClick={() => {
-                window.location.hash = "#contact"; 
+                window.location.hash = "#contact";
               }}
             >
               Let’s Talk
