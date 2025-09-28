@@ -41,9 +41,9 @@ export default function FloatingBackground({
   const mousePos = useRef({ x: 0, y: 0 });
   const tilt = useRef({ gamma: 0, beta: 0 });
   const [mounted, setMounted] = useState(false);
-
   const [initialIcons, setInitialIcons] = useState<FloatingIcon[]>([]);
 
+  // initialize icons
   useEffect(() => {
     setMounted(true);
 
@@ -77,6 +77,7 @@ export default function FloatingBackground({
     iconsRef.current = icons;
   }, [iconCount]);
 
+  // animate loop
   useEffect(() => {
     if (!mounted) return;
 
@@ -92,6 +93,7 @@ export default function FloatingBackground({
     if ("DeviceOrientationEvent" in window) {
       window.addEventListener("deviceorientation", handleOrientation, true);
     }
+   
 
     const animate = () => {
       const width = window.innerWidth;
@@ -102,6 +104,7 @@ export default function FloatingBackground({
       iconsRef.current.forEach((icon) => {
         icon.dy += gravity;
 
+        // repel from mouse
         const dxMouse = icon.x - mouseX;
         const dyMouse = icon.y - mouseY;
         const distMouse = Math.sqrt(dxMouse ** 2 + dyMouse ** 2);
@@ -110,12 +113,15 @@ export default function FloatingBackground({
           icon.dy += (dyMouse / distMouse) * 0.2;
         }
 
+        // tilt forces
         icon.dx += gamma * 0.005;
         icon.dy += beta * 0.005;
 
+        // update position
         icon.x += icon.dx;
         icon.y += icon.dy;
 
+        // wall bounce
         if (icon.x < 0 || icon.x > width - icon.size) {
           icon.dx *= -bounce;
           icon.x = Math.max(0, Math.min(width - icon.size, icon.x));
@@ -124,11 +130,45 @@ export default function FloatingBackground({
           icon.dy *= -bounce;
           icon.y = Math.max(0, Math.min(height - icon.size, icon.y));
         }
+      });
 
+      // 🔥 collision separation between icons (INSIDE loop)
+      for (let i = 0; i < iconsRef.current.length; i++) {
+        for (let j = i + 1; j < iconsRef.current.length; j++) {
+          const a = iconsRef.current[i];
+          const b = iconsRef.current[j];
+
+          const dx = b.x - a.x;
+          const dy = b.y - a.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          const minDist = (a.size + b.size) / 2 + 5;
+
+          if (dist < minDist && dist > 0) {
+            const nx = dx / dist;
+            const ny = dy / dist;
+            const overlap = minDist - dist;
+
+            const adjust = overlap * 0.5;
+            a.x -= nx * adjust;
+            a.y -= ny * adjust;
+            b.x += nx * adjust;
+            b.y += ny * adjust;
+
+            a.dx *= 0.98;
+            a.dy *= 0.98;
+            b.dx *= 0.98;
+            b.dy *= 0.98;
+          }
+        }
+      }
+
+      // apply transforms
+      iconsRef.current.forEach((icon) => {
         if (icon.el) {
-          icon.el.style.transform = `translate3d(${icon.x}px, ${icon.y}px, ${icon.y / 2}px)`;
+          icon.el.style.transform = `translate3d(${icon.x}px, ${icon.y}px, ${
+            icon.y / 2
+          }px)`;
           icon.el.style.opacity = "0.85";
-          icon.el.style.willChange = "transform, opacity";
         }
       });
 
@@ -145,18 +185,34 @@ export default function FloatingBackground({
     };
   }, [mounted]);
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    mousePos.current = { x: e.clientX, y: e.clientY };
-  };
+  const handleMouseMove = (e: React.MouseEvent | React.TouchEvent) => {
+      if ("touches" in e) {
+        const touch = e.touches[0];
+        mousePos.current = { x: touch.clientX, y: touch.clientY };
+      } else {
+        mousePos.current = { x: e.clientX, y: e.clientY };
+      }
+    };
 
-  if (!mounted) {
-    // Render children without icons during SSR
-    return <Box sx={{ position: "relative", ...sx }}>{children}</Box>;
-  }
+    const handleTouchStart = (e: React.TouchEvent) => {
+  const touch = e.touches[0];
+  mousePos.current = { x: touch.clientX, y: touch.clientY };
+
+  // give all icons a push
+  iconsRef.current.forEach((icon) => {
+    const dx = icon.x - touch.clientX;
+    const dy = icon.y - touch.clientY;
+    const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+    icon.dx += (dx / dist) * 2;
+    icon.dy += (dy / dist) * 2;
+  });
+};
 
   return (
     <Box
       onMouseMove={handleMouseMove}
+      onTouchMove={handleMouseMove}
+      onTouchStart={handleTouchStart}
       sx={{
         position: "relative",
         width: "100%",
@@ -188,7 +244,12 @@ export default function FloatingBackground({
               height: icon.size,
             }}
           >
-            <Icon icon={icon.icon} width={icon.size} height={icon.size} color="#00f6ff" />
+            <Icon
+              icon={icon.icon}
+              width={icon.size}
+              height={icon.size}
+              color="#00f6ff"
+            />
           </Box>
         ))}
       </Box>

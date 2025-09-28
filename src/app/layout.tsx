@@ -20,6 +20,8 @@ const merriweather = Merriweather({
   display: "swap",
   variable: "--font-merriweather",
 });
+
+
 const turretRoad = Turret_Road({
   subsets: ["latin"],
   weight: ["200", "300", "400", "500", "700", "800"],

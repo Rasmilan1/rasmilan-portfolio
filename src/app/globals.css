@@ -1,9 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: "Sansation";
+  src: url("/fonts/sansation/Sansation-Regular.ttf") format("ttf");
+  font-weight: 400;
+  font-style: normal;
+}
 
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+@font-face {
+  font-family: "Sansation";
+  src: url("/fonts/sansation/Sansation-Bold.ttf") format("ttf");
+  font-weight: 700;
+  font-style: normal;
 }
 
 .goldman-regular {
@@ -23,13 +34,11 @@
   font-style: normal;
 }
 
-
 .major-mono-display-regular {
   font-family: var(--font-major-mono-display), monospace;
   font-weight: 400;
   font-style: normal;
 }
-
 
 .zain-extralight {
   font-family: "Zain", sans-serif;
@@ -78,7 +87,6 @@
   font-weight: 400;
   font-style: italic;
 }
-
 
 /* styles/fonts.css */
 .sansation-light {

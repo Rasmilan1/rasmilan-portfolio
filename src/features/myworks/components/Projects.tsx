@@ -62,7 +62,7 @@ export default function Projects() {
               borderColor: "#57f2e5",
               borderWidth: "0 2px 0px 2px",
               borderRadius: "30px 0px 30px 0px",
-              px: 4,
+              px: 3,
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
@@ -108,14 +108,15 @@ export default function Projects() {
           <Zoom duration={500}>
             <Paper
               sx={{
-                bgcolor: "#2b2f36",
-                p: { xs: 1, md: 4 },
+                bgcolor: "#1f2329",
+                p: { xs: 1, md: 2 },
                 color: "white",
                 borderRadius: 4,
                 fontFamily: "monospace",
+                border: { xs: "2px solid #929e9dff", md: "1px solid #57f2e5" },
                 transition: "transform 0.4s ease, box-shadow 0.4s ease",
                 "&:hover": {
-                  transform: "scale(1.03)",
+                  transform: "scale(1.009)",
                 },
               }}
             >
@@ -123,14 +124,11 @@ export default function Projects() {
                 sx={{
                   width: "100%",
                   height: { xs: "22vh", sm: "42vh" },
-                  border: "4px solid #333",
+                  // border: "4px solid #333",
                   borderRadius: 2,
                   overflow: "hidden",
                   position: "relative",
                   display: "flex",
-                  "&:hover": {
-                    boxShadow: "0 0 10px rgba(255, 255, 255, 0.2)",
-                  },
                 }}
               >
                 {/* Image 3/4 */}
@@ -200,8 +198,8 @@ export default function Projects() {
                 <Box
                   sx={{
                     flex: 1,
-                    backgroundColor: "#45474cff",
-                    p: 2,
+                    bgcolor: "#1f2329",
+                    px: 1,
                     overflowY: "auto",
                     "&::-webkit-scrollbar": {
                       display: "none",
@@ -217,6 +215,7 @@ export default function Projects() {
                       fontFamily: "var(--font-sansation), sans-serif",
                       fontWeight: "600",
                       fontSize: { md: "0.8rem" },
+                      
                     }}
                   >
                     {selectedProject.description}
@@ -238,7 +237,8 @@ export default function Projects() {
           <Zoom duration={500} triggerOnce={false}>
             <Paper
               sx={{
-                bgcolor: "#2b2f36",
+                bgcolor: "#1f2329",
+                border: { xs: "2px solid #929e9dff", md: "1px solid #57f2e5" },
                 p: { xs: 1, md: 2 },
                 color: "white",
                 borderRadius: 4,

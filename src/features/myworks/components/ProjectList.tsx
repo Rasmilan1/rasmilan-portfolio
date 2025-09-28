@@ -1,4 +1,4 @@
-import { Box, List, ListItem, ListItemText } from "@mui/material";
+import { List, ListItem, ListItemText } from "@mui/material";
 import InfoIcon from "@mui/icons-material/Info";
 import { useState } from "react";
 import ProjectModal from "./ProjectModal";
@@ -63,8 +63,9 @@ export default function ProjectList({
     setModalProjectIndex(null);
   };
   return (
-    <Box sx={{ bgcolor: "#2b2f36", borderRadius: 4 }}>
-      <List>
+    // <Box sx={{ bgcolor: "#2b2f36", borderRadius: 4 }}>
+    <>
+    <List>
         {projects.map((project, i) => (
           <ListItem
             key={i}
@@ -112,7 +113,8 @@ export default function ProjectList({
           modalProjectIndex !== null ? projects[modalProjectIndex] : null
         }
       />
-    </Box>
+    </>
+      
   );
 }
 

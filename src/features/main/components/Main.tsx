@@ -67,6 +67,7 @@ export default function Main() {
 
             <Typography
               variant="h3"
+              component="span"
               sx={{
                 fontFamily: '"Zain", sans-serif',
                 fontWeight: "bold",

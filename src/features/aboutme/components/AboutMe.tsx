@@ -16,7 +16,6 @@ export default function AboutMe() {
         justifyContent: "center",
       }}
     >
-      
       <Fade cascade damping={0.2} duration={2000}>
         <Box
           display="flex"
@@ -46,92 +45,97 @@ export default function AboutMe() {
 
       <Grid container spacing={6} alignItems="stretch" mt={4}>
         <Grid size={{ xs: 12, md: 6 }}>
-         <Slide direction="left" duration={500} triggerOnce={false}>
-          <Paper
-            sx={{
-              bgcolor: "#2b2f36",
-              p: 4,
-              color: "white",
-              borderRadius: 4,
-              fontFamily: "monospace",
-              transition: "transform 0.4s ease, box-shadow 0.4s ease",
-              "&:hover": {
-                transform: "scale(1.03)",
-                boxShadow: "0 0 20px rgba(87, 242, 229, 0.4)", 
-                zIndex: 1,
-                height: "100%",
-              },
-            }}
-          >
-            <Typography
-              variant="h6"
-              color="#57f2e5"
+          <Slide direction="left" duration={500} triggerOnce={false}>
+            <Paper
               sx={{
-                fontFamily: '"Zain", sans-serif',
-                fontWeight: "bold", 
-                fontStyle: "normal",
+                bgcolor: "#1f2329",
+                p: 4,
+                border: { xs: "2px solid #929e9dff", md: "1px solid #57f2e5" },
+                color: "white",
+                borderRadius: 4,
+                fontFamily: "monospace",
+                transition: "transform 0.4s ease, box-shadow 0.4s ease",
+                "&:hover": {
+                  transform: "scale(1.009)",
+                  zIndex: 1,
+                  height: "100%",
+                },
               }}
             >
-              Hello!
-            </Typography>
+              <Typography
+                variant="h6"
+                color="#57f2e5"
+                sx={{
+                  fontFamily: '"Zain", sans-serif',
+                  fontWeight: "bold",
+                  fontStyle: "normal",
+                }}
+              >
+                Hello!
+              </Typography>
 
-            <Typography
-              variant="body2"
-              mt={2}
-              sx={{
-                fontFamily: "var(--font-lexend-deca), sans-serif",
-                fontWeight: 400,
-                textAlign: "justify",
-                wordSpacing: "0.03em",
-              }}
-            >
-              My name is Selvachandran Rasmilan. I’m a passionate full-stack
-              developer who loves solving problems and building secure,
-              scalable, and user-friendly applications.
-            </Typography>
-            <Typography
-              variant="body2"
-              mt={2}
-              sx={{
-                fontFamily: "var(--font-lexend-deca), sans-serif",
-                fontWeight: 400,
-                textAlign: "justify",
-                wordSpacing: "0.03em",
-              }}
-            >
-              {`I'm`} a fast learner who thrives in collaborative team
-              environments and enjoys challenges that push me to grow — both
-              technically and creatively. Beyond coding, I’m dedicated to
-              continuous learning, exploring new technologies, and contributing
-              to tech initiatives that empower others through innovation and
-              education.
-            </Typography>
-          </Paper>
+              <Typography
+                variant="body2"
+                mt={2}
+                sx={{
+                  fontFamily: "var(--font-lexend-deca), sans-serif",
+                  fontWeight: 400,
+                  textAlign: "justify",
+                  wordSpacing: "0.03em",
+                }}
+              >
+                My name is Selvachandran Rasmilan. I’m a passionate full-stack
+                developer who loves solving problems and building secure,
+                scalable, and user-friendly applications.
+              </Typography>
+              <Typography
+                variant="body2"
+                mt={2}
+                sx={{
+                  fontFamily: "var(--font-lexend-deca), sans-serif",
+                  fontWeight: 400,
+                  textAlign: "justify",
+                  wordSpacing: "0.03em",
+                }}
+              >
+                {`I'm`} a fast learner who thrives in collaborative team
+                environments and enjoys challenges that push me to grow — both
+                technically and creatively. Beyond coding, I’m dedicated to
+                continuous learning, exploring new technologies, and
+                contributing to tech initiatives that empower others through
+                innovation and education.
+              </Typography>
+            </Paper>
           </Slide>
         </Grid>
 
-        
         <Grid size={{ xs: 12, md: 6 }} display={{ xs: "none", md: "block" }}>
-          
-      <Slide direction="right" duration={500} triggerOnce={false}>
-          <Box
-            sx={{
-              height: "100%",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              bgcolor: "#2b2f36", 
-              borderRadius: 4,
-              p: 2,
-            }}
-          >
-            <DotLottieReact
-              src="aboutme/Developer.lottie"
-              autoplay
-              loop
-              style={{ width: "100%", height: "auto" }}
-            />
-          </Box>
+          <Slide direction="right" duration={500} triggerOnce={false}>
+            <Box
+              sx={{
+                height: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                bgcolor: "#1f2329",
+                borderRadius: 4,
+                p: 2,
+                border: { xs: "2px solid #929e9dff", md: "1px solid #57f2e5" },
+                transition: "transform 0.4s ease, box-shadow 0.4s ease",
+                "&:hover": {
+                  transform: "scale(1.009)",
+                  zIndex: 1,
+                  height: "100%",
+                },
+              }}
+            >
+              <DotLottieReact
+                src="aboutme/Developer.lottie"
+                autoplay
+                loop
+                style={{ width: "100%", height: "auto" }}
+              />
+            </Box>
           </Slide>
         </Grid>
       </Grid>
