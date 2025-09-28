@@ -31,7 +31,7 @@ const minSpacing = 40;
 export default function FloatingBackground({
   children,
   sx,
-  iconCount = 40,
+  iconCount = 30,
 }: {
   children: React.ReactNode;
   sx?: SxProps<Theme>;
