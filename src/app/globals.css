@@ -5,14 +5,14 @@
 }
 @font-face {
   font-family: "Sansation";
-  src: url("/fonts/sansation/Sansation-Regular.ttf") format("ttf");
+  src: url("/fonts/sansation/Sansation-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Sansation";
-  src: url("/fonts/sansation/Sansation-Bold.ttf") format("ttf");
+  src: url("/fonts/sansation/Sansation-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
 }

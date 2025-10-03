@@ -19,6 +19,8 @@ export default function Home() {
           scrollSnapType: "y mandatory",
           overflowY: "scroll",
           "&::-webkit-scrollbar": { display: "none" },
+          mt:{md:4}
+          
         }}
       >
         {/* Main Page   */}
