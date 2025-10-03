@@ -19,8 +19,6 @@ export default function Home() {
           scrollSnapType: "y mandatory",
           overflowY: "scroll",
           "&::-webkit-scrollbar": { display: "none" },
-          mt:{md:4}
-          
         }}
       >
         {/* Main Page   */}
@@ -35,7 +33,6 @@ export default function Home() {
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
-            scrollSnapStop: "always",
           }}
         >
           <Main />
@@ -53,7 +50,6 @@ export default function Home() {
             alignItems: "center",
             flexDirection: "column",
             bgcolor: "#1f2329",
-            scrollSnapStop: "always",
           }}
         >
           <AboutMe />
@@ -71,7 +67,6 @@ export default function Home() {
             alignItems: "center",
             bgcolor: "#1f2329",
             flexDirection: "column",
-            scrollSnapStop: "always",
           }}
         >
           <Projects />
@@ -87,7 +82,6 @@ export default function Home() {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            scrollSnapStop: "always",
             bgcolor: "#1f2329",
             flexDirection: "column",
           }}
@@ -101,7 +95,6 @@ export default function Home() {
           sx={{
             scrollSnapAlign: "start",
             color: "white",
-            scrollSnapStop: "always",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
