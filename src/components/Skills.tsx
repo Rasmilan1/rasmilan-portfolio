@@ -30,7 +30,9 @@ export default function SkillsSection() {
         flexDirection="column"
         justifyContent="center"
         alignItems="center"
-        mb={{ md: 7 }}
+        mb={{ md: 7 ,xs:6}}
+        // py={7}
+        
       >
         <Fade cascade damping={0.2} duration={2000}>
           <Typography
@@ -152,7 +154,9 @@ export default function SkillsSection() {
           </Flip>
         </Stack>
       </Box>
-      <SequentialIconScroll />
+      <Box sx={{ display: { xs: "none", md: "block" } }}>
+        <SequentialIconScroll />
+      </Box>
     </Container>
   );
 }
