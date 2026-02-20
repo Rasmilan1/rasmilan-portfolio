@@ -1,12 +1,11 @@
 "use client";
 
-import { Box, Container, Paper, Stack, Typography } from "@mui/material";
-
+import SequentialIconScroll from "@/features/skills/components/SequentialIconScroll";
+import { Box, Typography, Container, Paper, Stack } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Fade, Flip } from "react-awesome-reveal";
-import FloatingBackground from "./FloatingBackground";
 
-export default function Skills() {
+export default function SkillsSection() {
   const [dots, setDots] = useState(".");
 
   useEffect(() => {
@@ -17,72 +16,69 @@ export default function Skills() {
   }, []);
 
   return (
-    <FloatingBackground>
-      <Container
-        maxWidth="lg"
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          gap: { xs: 2, sm: 3, md: 6 },
-          minHeight: "100vh",
-          width: "100%",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
+    <Container
+      maxWidth="lg"
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Box
+        display="flex"
+        flexDirection="column"
+        justifyContent="center"
+        alignItems="center"
+        mb={{ md: 7 }}
       >
-        <Box
-          display="flex"
-          flexDirection="column"
-          justifyContent="center"
-          alignItems="center"
-          mb={{ md: 9 }}
-        >
-          <Fade cascade damping={0.2} duration={2000}>
-            <Typography
-              variant="h3"
-              sx={{
-                color: "white",
-                fontFamily: "'Sansation', sans-serif",
-                fontWeight: "bold",
-                display: "flex",
-                borderStyle: "solid",
-                borderColor: "#57f2e5",
-                borderWidth: "0 2px 0px 2px",
-                borderRadius: "30px 0px 30px 0px",
-                px: 4,
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              Skills
-              <Typography
-                variant="caption"
-                sx={{
-                  fontFamily: "'Turret Road', sans-serif",
-                  fontWeight: "bold",
-                  textAlign: "center",
-                  display: { xs: "none", sm: "flex" },
-                }}
-              >
-                I am striving to never stop learning and improving
-              </Typography>
-            </Typography>
-
+        <Fade cascade damping={0.2} duration={2000}>
+          <Typography
+            variant="h3"
+            sx={{
+              color: "white",
+              fontFamily: "'Sansation', sans-serif",
+              fontWeight: "bold",
+              display: "flex",
+              borderStyle: "solid",
+              borderColor: "#57f2e5",
+              borderWidth: "0 2px 0px 2px",
+              borderRadius: "30px 0px 30px 0px",
+              px: 4,
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            Skills
             <Typography
               variant="caption"
               sx={{
                 fontFamily: "'Turret Road', sans-serif",
                 fontWeight: "bold",
                 textAlign: "center",
-                display: { xs: "block", sm: "none" },
+                display: { xs: "none", sm: "flex" },
               }}
             >
-              Always Improving
+              I am striving to never stop learning and improving
             </Typography>
-          </Fade>
-        </Box>
+          </Typography>
 
+          <Typography
+            variant="caption"
+            sx={{
+              fontFamily: "'Turret Road', sans-serif",
+              fontWeight: "bold",
+              textAlign: "center",
+              display: { xs: "block", sm: "none" },
+            }}
+          >
+            Always Improving
+          </Typography>
+        </Fade>
+      </Box>
+
+      <Box textAlign="center">
         {/* Web & App Boxes */}
         <Stack
           direction={{ xs: "column", sm: "row" }}
@@ -155,9 +151,8 @@ export default function Skills() {
             </Paper>
           </Flip>
         </Stack>
-
-        {/* Scrolling Icons Section */}
-      </Container>
-    </FloatingBackground>
+      </Box>
+      <SequentialIconScroll />
+    </Container>
   );
 }

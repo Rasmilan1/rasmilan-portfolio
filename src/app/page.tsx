@@ -1,111 +1,39 @@
-import React from "react";
-import { Box } from "@mui/material";
-import Navbar from "@/features/navigation/components/Navbar";
-import Main from "@/features/main/components/Main";
-import AboutMe from "@/features/aboutme/components/AboutMe";
-import Projects from "@/features/myworks/components/Projects";
-import Contact from "@/features/contact/components/Contact";
-import Footer from "@/features/main/components/Footer";
-import Skills from "@/features/skills/Skills";
+"use client";
 
-export default function Home() {
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+import Section from "@/components/Section";
+import Skills from "@/components/Skills";
+import Contact from "@/components/Contact";
+import AboutMe from "@/components/AboutMe";
+import Main from "@/components/Main";
+import FeaturedProjects from "@/components/Projects";
+import { Box } from "@mui/material";
+
+export default function HomePage() {
   return (
     <>
-      {/* Navbar  */}
       <Navbar />
-      <Box
-        sx={{
-          height: "100vh",
-          scrollSnapType: "y mandatory",
-          overflowY: "scroll",
-          "&::-webkit-scrollbar": { display: "none" },
-        }}
-      >
-        {/* Main Page   */}
-        <Box
-          id="home"
-          sx={{
-            height: "100vh",
-            scrollSnapAlign: "start",
-            bgcolor: "#1f2329",
-            color: "white",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "column",
-          }}
-        >
-          <Main />
-        </Box>
 
-        {/* AboutMe Page */}
-        <Box
-          id="about"
-          sx={{
-            height: "100vh",
-            scrollSnapAlign: "start",
-            color: "white",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "column",
-            bgcolor: "#1f2329",
-          }}
-        >
-          <AboutMe />
-        </Box>
+      <Section id="home">
+        <Main />
+      </Section>
 
-        {/* Project List */}
-        <Box
-          id="projects"
-          sx={{
-            height: "100vh",
-            scrollSnapAlign: "start",
-            color: "white",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            bgcolor: "#1f2329",
-            flexDirection: "column",
-          }}
-        >
-          <Projects />
-        </Box>
+      <Section id="about">
+        <AboutMe />
+      </Section>
 
-        {/* Skills */}
-        <Box
-          id="skills"
-          sx={{
-            height: "100vh",
-            scrollSnapAlign: "start",
-            color: "white",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            bgcolor: "#1f2329",
-            flexDirection: "column",
-          }}
-        >
-          <Skills />
-        </Box>
-
-        {/* Contact */}
-        <Box
-          id="contact"
-          sx={{
-            scrollSnapAlign: "start",
-            color: "white",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            bgcolor: "#1f2329",
-            flexDirection: "column",
-          }}
-        >
-          <Contact />
-          <Footer />
-        </Box>
+      <Section id="skills">
+        <Skills />
+      </Section>
+      <Box  id="projects">
+        <FeaturedProjects />
       </Box>
+
+      <Section id="contact">
+        <Contact />
+      </Section>
+      <Footer />
     </>
   );
 }

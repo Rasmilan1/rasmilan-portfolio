@@ -11,8 +11,6 @@ export default function AboutMe() {
         display: "flex",
         flexDirection: "column",
         gap: { xs: 2, sm: 3, md: 6 },
-        minHeight: "100vh",
-        width: "100%",
         justifyContent: "center",
       }}
     >
