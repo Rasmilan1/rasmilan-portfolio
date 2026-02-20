@@ -1,4 +1,8 @@
-import type { Metadata } from "next";
+"use client";
+
+import { ReactNode } from "react";
+import { ThemeProvider, CssBaseline, Box } from "@mui/material";
+import { theme } from "@/theme/theme";
 import {
   Geist,
   Geist_Mono,
@@ -7,20 +11,20 @@ import {
   Courier_Prime,
   Major_Mono_Display,
 } from "next/font/google";
-import "./globals.css";
+import './globals.css';
+
 import { Zain } from "next/font/google";
 import { Turret_Road } from "next/font/google";
 
 import { Merriweather } from "next/font/google";
 
 const merriweather = Merriweather({
-  weight: ["400", "700"], 
+  weight: ["400", "700"],
   style: ["normal", "italic"],
   subsets: ["latin"],
   display: "swap",
   variable: "--font-merriweather",
 });
-
 
 const turretRoad = Turret_Road({
   subsets: ["latin"],
@@ -36,7 +40,6 @@ const zain = Zain({
   style: ["normal", "italic"],
   variable: "--font-zain",
 });
-
 
 const majorMonoDisplay = Major_Mono_Display({
   subsets: ["latin"],
@@ -73,37 +76,47 @@ const goldman = Goldman({
   variable: "--font-goldman",
 });
 
-export const metadata: Metadata = {
-  title: "Rasmilan's Portfolio",
-  description: "Welcome to my portfolio! Explore my projects and skills.",
-  icons: {
-    icon: "/programmer.png",
-  },
-};
+// export const metadata: Metadata = {
+//   title: "Rasmilan's Portfolio",
+//   description: "Welcome to my portfolio! Explore my projects and skills.",
+//   icons: {
+//     icon: "/programmer.png",
+//   },
+// };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body
         className={`
-    ${geistSans.variable} 
-    ${geistMono.variable} 
-    ${goldman.variable} 
-    ${courierPrime.variable} 
-    ${lexenddeca.variable} 
-    ${majorMonoDisplay.variable} 
-    ${merriweather.variable} 
-    ${turretRoad.variable} 
-    ${zain.variable} 
+    ${geistSans.variable}
+    ${geistMono.variable}
+    ${goldman.variable}
+    ${courierPrime.variable}
+    ${lexenddeca.variable}
+    ${majorMonoDisplay.variable}
+    ${merriweather.variable}
+    ${turretRoad.variable}
+    ${zain.variable}
     antialiased
   `}
       >
-        {children}
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Box
+            sx={{
+              scrollBehavior: "smooth",
+             scrollSnapType: "y proximity",
+
+              overflowY: "scroll",
+              height: "100vh",
+            }}
+          >
+            {children}
+          </Box>
+        </ThemeProvider>
       </body>
     </html>
   );
 }
+

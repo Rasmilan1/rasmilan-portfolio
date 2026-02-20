@@ -32,18 +32,18 @@ export default function Contact() {
         "service_1jzfw64",
         "template_xgdjuu5",
         formEl,
-        "Fqzbly285cLKDdQF1"
+        "Fqzbly285cLKDdQF1",
       )
       .then(
         () => {
           setStatusMessage("✅ Message sent successfully!");
           formEl.reset();
-          setTimeout(() => setStatusMessage(""), 3000); 
+          setTimeout(() => setStatusMessage(""), 3000);
         },
         (error) => {
           setStatusMessage("❌ Failed to send message: " + error.text);
-          setTimeout(() => setStatusMessage(""), 3000); 
-        }
+          setTimeout(() => setStatusMessage(""), 3000);
+        },
       );
   };
 
@@ -202,12 +202,14 @@ export default function Contact() {
           {statusMessage && (
             <Typography
               variant="body2"
-              color={status === "success" ? "success.main" : "error.main"}
               align="center"
+              sx={{
+                color: statusMessage.startsWith("✅")
+                  ? "success.main"
+                  : "error.main",
+              }}
             >
-              {statusMessage === "success"
-                ? "✅ Message sent successfully!"
-                : "❌ Failed to send message."}
+              {statusMessage}
             </Typography>
           )}
         </Box>

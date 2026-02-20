@@ -16,7 +16,7 @@ const chips = [
   { label: "REACTJS", sx: { bgcolor: "#61DAFB", color: "black" } },
 ];
 
-export default function Profile() {
+export default function ProfileCard() {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

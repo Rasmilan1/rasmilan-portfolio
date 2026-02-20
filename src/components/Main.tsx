@@ -1,10 +1,10 @@
 "use client";
 
-import { Email } from "@mui/icons-material";
 import { Box, Button, Container, Paper, Typography } from "@mui/material";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import Profile from "@/features/aboutme/components/Profile";
 import { Fade, Slide } from "react-awesome-reveal";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import ProfileCard from "@/features/main/components/ProfileCard";
+import { Email } from "@mui/icons-material";
 
 const bounceAnimation = {
   "@keyframes bounce": {
@@ -31,7 +31,7 @@ export default function Main() {
     >
       <Box sx={{ order: { xs: 3, sm: 3, md: 0 } }}>
         <Slide direction="left" duration={1000}>
-          <Profile />
+          <ProfileCard />
         </Slide>
       </Box>
 
@@ -75,7 +75,7 @@ export default function Main() {
                 mt: { md: 3 },
               }}
             >
-              Hey{" "}
+              Hey
               <Box
                 component="br"
                 sx={{ display: { xs: "none", md: "block" } }}
@@ -113,12 +113,12 @@ export default function Main() {
             <Button
               variant="text"
               endIcon={<Email />}
-              sx={{
-                mt: 2,
-                color: "#57f2e5",
-              }}
+              sx={{ mt: 2, color: "#57f2e5" }}
               onClick={() => {
-                window.location.hash = "#contact";
+                const element = document.getElementById("contact");
+                if (element) {
+                  element.scrollIntoView({ behavior: "smooth" });
+                }
               }}
             >
               Let’s Talk
