@@ -11,7 +11,7 @@ import {
   Courier_Prime,
   Major_Mono_Display,
 } from "next/font/google";
-import './globals.css';
+import "./globals.css";
 
 import { Zain } from "next/font/google";
 import { Turret_Road } from "next/font/google";
@@ -103,20 +103,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       >
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <Box
-            sx={{
-              scrollBehavior: "smooth",
-             scrollSnapType: "y proximity",
-
-              overflowY: "scroll",
-              height: "100vh",
-            }}
-          >
-            {children}
-          </Box>
+          {children}
         </ThemeProvider>
       </body>
     </html>
   );
 }
-
