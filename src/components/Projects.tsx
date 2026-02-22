@@ -47,7 +47,7 @@ export default function FeaturedProjects() {
           }}
         >
           Here are some of the selected projects that showcase my passion for
-          front-end development.
+          full stack development.
         </Typography>
       </Box>
       <Box>
